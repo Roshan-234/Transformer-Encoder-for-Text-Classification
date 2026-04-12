@@ -1,0 +1,85 @@
+=================================================================
+  CS 5100 Final Project — Complete Results
+  Roshan Ghimire | SST-2 Binary Sentiment Classification
+=================================================================
+
+─────────────────────────────────────────────────────────────────
+  CLASSIFICATION ACCURACY (Validation Set)
+─────────────────────────────────────────────────────────────────
+  Model                                 Accuracy   F1 Macro
+  ---------------------------------------------------------
+  TF-IDF + LR                             0.8096     0.8088
+  BiLSTM                                  0.8257     0.8254
+  Transformer (from scratch)              0.8085     0.8085
+
+─────────────────────────────────────────────────────────────────
+  PER-MODEL FULL METRICS
+─────────────────────────────────────────────────────────────────
+
+  TF-IDF + LR
+    Accuracy          : 0.8096
+    F1 Macro          : 0.8088
+    F1 Weighted       : 0.8091
+    MCC               : 0.6211
+    AUC-ROC           : 0.9065
+    Precision (Neg/Pos): 0.8376 / 0.7872
+    Recall    (Neg/Pos): 0.7593 / 0.8581
+    F1        (Neg/Pos): 0.7966 / 0.8211
+    Confusion Matrix:
+                          Pred Neg   Pred Pos
+      Actual Neg          325        103
+      Actual Pos           63        381
+
+  BiLSTM
+    Accuracy          : 0.8257
+    F1 Macro          : 0.8254
+    F1 Weighted       : 0.8255
+    MCC               : 0.6516
+    AUC-ROC           : 0.9012
+    Precision (Neg/Pos): 0.8366 / 0.8160
+    Recall    (Neg/Pos): 0.8014 / 0.8491
+    F1        (Neg/Pos): 0.8186 / 0.8322
+    Confusion Matrix:
+                          Pred Neg   Pred Pos
+      Actual Neg          343         85
+      Actual Pos           67        377
+
+  Transformer (from scratch)
+    Accuracy          : 0.8085
+    F1 Macro          : 0.8085
+    F1 Weighted       : 0.8084
+    MCC               : 0.6181
+    AUC-ROC           : 0.8869
+    Precision (Neg/Pos): 0.7894 / 0.8290
+    Recall    (Neg/Pos): 0.8318 / 0.7860
+    F1        (Neg/Pos): 0.8100 / 0.8069
+    Confusion Matrix:
+                          Pred Neg   Pred Pos
+      Actual Neg          356         72
+      Actual Pos           95        349
+
+─────────────────────────────────────────────────────────────────
+  PROBING CLASSIFIER RESULTS (Accuracy per Encoder Layer)
+─────────────────────────────────────────────────────────────────
+  Probe                Layer 1 | Layer 2 | Layer 3 | Layer 4
+  -------------------------------------------------------
+  sentiment            0.8000 | 0.8057 | 0.8057 | 0.7943
+  negation             0.6230 | 0.5798 | 0.5680 | 0.4706
+  intensifier          0.5909 | 0.5914 | 0.6009 | 0.5887
+
+─────────────────────────────────────────────────────────────────
+  OUTPUT FILES
+─────────────────────────────────────────────────────────────────
+  outputs/results.txt                 <- this file
+  outputs/model_comparison.png        <- accuracy bar chart
+  outputs/metrics_comparison.png      <- full metrics bar chart
+  outputs/tfidf_vs_attention.png      <- RQ1 word importance
+  outputs/bilstm_curves.png
+  outputs/transformer_curves.png
+  outputs/confusion_tfidf*.png
+  outputs/confusion_bilstm*.png
+  outputs/confusion_transformer*.png
+  outputs/attention/                  <- RQ2 heat maps
+  outputs/saliency/                   <- RQ3 gradient saliency
+  outputs/probing/                    <- RQ3 probe plots
+=================================================================

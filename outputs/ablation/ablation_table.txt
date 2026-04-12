@@ -1,0 +1,11 @@
+ABLATION STUDY RESULTS
+===========================================================================
+Variant                              Acc   F1 Mac     MCC     AUC  Best Ep
+───────────────────────────────────────────────────────────────────────────
+Full Model (baseline)             0.8096   0.8096  0.6211  0.8759     5 (baseline)
+No Positional Encoding            0.8142   0.8139  0.6286  0.8959     9 (+0.005)
+Single-Head Attention             0.8039   0.8038  0.6108  0.8765    14 (-0.006)
+No Residual Connections           0.5092   0.3374  0.0000  0.5002     1 (-0.300)
+No Layer Normalization            0.8131   0.8127  0.6267  0.8897     3 (+0.003)
+───────────────────────────────────────────────────────────────────────────
+Delta = difference from full model accuracy.

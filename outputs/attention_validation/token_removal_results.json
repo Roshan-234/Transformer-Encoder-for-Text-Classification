@@ -1,0 +1,26 @@
+{
+  "1": {
+    "n": 200,
+    "original_acc": 0.785,
+    "attn_removal_acc": 0.72,
+    "rand_removal_acc": 0.7820000000000004,
+    "attn_drop": 0.06500000000000006,
+    "rand_drop": 0.0029999999999996696
+  },
+  "2": {
+    "n": 200,
+    "original_acc": 0.785,
+    "attn_removal_acc": 0.65,
+    "rand_removal_acc": 0.764,
+    "attn_drop": 0.135,
+    "rand_drop": 0.02100000000000002
+  },
+  "3": {
+    "n": 200,
+    "original_acc": 0.785,
+    "attn_removal_acc": 0.68,
+    "rand_removal_acc": 0.7605,
+    "attn_drop": 0.10499999999999998,
+    "rand_drop": 0.024500000000000077
+  }
+}
