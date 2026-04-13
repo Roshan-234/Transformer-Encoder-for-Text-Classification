@@ -209,21 +209,6 @@ The things that help prevent overfitting are:
 - Gradient norm clipping which prevents the model from making big updates
 
 
-
-## What Gets Generated
-
-After running the model we get some files in the outputs folder.
-
-These files include the metrics, model comparison metrics comparison, TF-IDF vs attention, confusion matrices, training and validation curves attention heat maps, saliency maps, probing plots, ablation plots and scaling plots.
-
-## Optional: GloVe Embeddings
-
-We can also use GloVe embeddings in our model.
-
-To do this we need to download the GloVe file extract the 100d embeddings and put them in the data folder.
-
-Then we can run the model as normal.
-
 ## Research Questions
 
 We had three research questions:
