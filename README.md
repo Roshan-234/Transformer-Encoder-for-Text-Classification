@@ -191,57 +191,6 @@ The model has 6,927,618 trainable parameters. All linear layers are initialized 
 
 ---
 
-## Hyperparameters
-
-The hyperparameters are centralized in `config.py`. You can change the hyperparameters in this file to experiment with settings.
-
-**Transformer:**
-
-Setting | Value | Rationale |
-
-|---|---|---|
-
-| d_model 256 | Embedding and hidden dimension throughout |
-
-| num_heads | 4 | 64 dimensions per head |
-
-| num_layers | 4 | Four stacked encoder layers |
-
-| d_ff | 1024 | Four times d_model, following Vaswani et al.
-
-| Dropout | 0.1 | Applied in attention and feed-forward |
-
-| warmup_steps | 400 | Vaswani warmup schedule peak |
-
-| label_smoothing 0.1 | Softens targets, from {0,1} to {0.05, 0.95} |
-
-| max_epochs | 25 | Early stopping always fires before this |
-
-| patience | 6 | Epochs without improvement before stopping |
-
-| gap patience | 4 | Epochs with train-val gap > 12% before stopping |
-
-| swa_start | 8 | Epoch at which weight averaging begins |
-
-**BiLSTM:**
-
-Setting | Value |
-
-|---|---|
-
-| embed_dim / hidden_dim 128 / 256 |
-
-| num_layers | 2 |
-
-| dropout | 0.5 |
-
-| learning rate | 1e-3 cosine annealed to 1e-5 |
-
-label_smoothing | 0.05 |
-
-| val patience / gap patience | 3 / 3 |
-
-| max_gap | 10% |
 
 ## How Overfitting Is Controlled
 
@@ -259,31 +208,7 @@ The things that help prevent overfitting are:
 
 - Gradient norm clipping which prevents the model from making big updates
 
-## Interpretability
 
-We did some experiments to see what the attention mechanism has learned.
-
-We trained some regression models on the hidden states of the encoder to see if they can predict certain properties.
-
-The results show that the sentiment polarity is stable across all layers. The negation word identity declines as we go deeper into the layers.
-
-Here are the results:
-
-Probe | Layer 1 | Layer 2 | Layer 3 | Layer 4 |
-
-|---|---|---|---|---|
-
-| Sentiment polarity | 80.0% | 80.6% | 80.6% | 79.4% |
-
-Negation word identity | 62.3% | 58.0% 56.8% | 47.1% |
-
-| Intensifier word identity | 59.1% | 59.1% 60.1% | 58.9% |
-
-We also computed the gradient saliency for each token and compared it to the attention weights.
-
-We did an attention faithfulness test by zeroing out the top-K attention tokens and comparing the accuracy drop to dropping K tokens.
-
-We computed the Spearman correlation between attention weights and gradient saliency per layer.
 
 ## What Gets Generated
 
