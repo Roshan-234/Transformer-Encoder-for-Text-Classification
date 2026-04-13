@@ -147,14 +147,6 @@ python main.py --only-validation
 
 ```
 
-You can also analyze your own sentences using:
-
-```bash
-
-python evaluate.py --sentence "the film is not good at all"
-
-```
-
 ---
 
 ## The Architecture
