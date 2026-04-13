@@ -19,46 +19,31 @@ The project focuses on binary sentiment classification on the Stanford Sentiment
 The three models were evaluated on the SST-2 validation set, which has 872 examples. The results are as follows:
 
 | Model | Accuracy | F1 Macro | MCC | AUC-ROC |
-
 |---|---|---|---|---|
-
-| TF-IDF. Logistic Regression | 80.96% | 0.8088 | 0.6211 | 0.9065 |
-
-Bidirectional LSTM | 82.57% | 0.8254 | 0.6516 | 0.9012 |
-
-Transformer (from scratch) | 80.85% | 0.8085 | 0.6181 | 0.8869 |
+| TF-IDF + Logistic Regression | 80.96% | 0.8088 | 0.6211 | 0.9065 |
+| Bidirectional LSTM | 82.57% | 0.8254 | 0.6516 | 0.9012 |
+| Transformer (from scratch) | 80.85% | 0.8085 | 0.6181 | 0.8869 |
 
 The Transformer model performs similarly to the TF-IDF model in terms of accuracy. It produces more informative representations. It learns to pay attention to words that're important for the sentiment, such as negation words.
 
 **Ablation study**. This is a study where each variant of the model removes one component at a time:
 
-Variant | Accuracy | Change | What It Shows |
-
+| Variant | Accuracy | Change | What It Shows |
 |---|---|---|---|
-
-| Full Model 80.96% |. | Baseline |
-
-| No Positional Encoding | 81.42% | +0.46% | Word order is not very important for short SST-2 phrases |
-
-Single-Head Attention | 80.39% | −0.57% Multiple attention heads help the model converge faster |
-
-| No Residual Connections. 50.92% | −30.04% | The model fails to train without connections |
-
-| No Layer Normalization | 81.31% | +0.35% | Layer normalization helps with stability. Not accuracy |
-
+| Full Model | 80.96% | — | Baseline |
+| No Positional Encoding | 81.42% | +0.46% | Word order is largely irrelevant for short SST-2 phrases |
+| Single-Head Attention | 80.39% | −0.57% | Multiple heads primarily speed up convergence |
+| No Residual Connections | 50.92% | −30.04% | Complete training collapse — model predicts everything as positive |
+| No Layer Normalization | 81.31% | +0.35% | Stability costs only; accuracy recovers |
 The most surprising result is that the model fails to train without residual connections. This shows that residual connections are essential for the model to learn.
 
 **Attention faithfulness test**. This test shows how important high-attention tokens are compared to ones:
 
-| Tokens Removed (K) | Attention-Guided Drop Random Drop | Ratio |
-
+| Tokens Removed (K) | Attention-Guided Drop | Random Drop | Ratio |
 |---|---|---|---|
-
 | 1 | −6.50% | −0.30% | 21.67× |
-
 | 2 | −13.50% | −2.10% | 6.43× |
-
-3 | −10.50% | −2.45% | 4.29× |
+| 3 | −10.50% | −2.45% | 4.29× |
 
 ---
 
@@ -343,11 +328,5 @@ We used some papers in our research:
 - Vaswani et al. (2017). *Attention Is All You Need.*
 
 - Clark et al. (2019). *What Does BERT Look At? An Analysis of BERTs Attention.*
-
--. Wallace (2019). *Attention Is Not Explanation.*
-
--. Pinter (2019). *Attention Is Not Not Explanation.*
-
-- Socher et al. (2013). *Recursive Deep Models for Semantic Compositionality, over a Sentiment Treebank.*
 
 *Roshan Ghimire. MSAI, Khoury College of Computer Sciences, Northeastern University*
